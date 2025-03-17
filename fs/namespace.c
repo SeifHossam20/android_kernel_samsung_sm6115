@@ -1645,14 +1645,8 @@ static inline bool may_mandlock(void)
 }
 #endif
 
-/*
- * Now umount can handle mount points as well as block devices.
- * This is important for filesystems which use unnamed block devices.
- *
- * We now support a flag for forced unmount like the other 'big iron'
- * unixes. Our API is identical to OSF/1 to avoid making a mess of AMD
- */
-
+static int path_umount(struct path *path, int flags)
+{	
 int ksys_umount(char __user *name, int flags)
 {
 	struct path path;
